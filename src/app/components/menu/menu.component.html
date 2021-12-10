@@ -1,0 +1,30 @@
+<div class="navbar-container">
+  <div>
+    <div class="navbar red-stripe" *ngIf="innerWidth > 768; else mobileNav">
+      <button class="nav-button" (click)="navigateTo('home')">Home</button>
+      <span class="separator"></span>
+      <button class="nav-button" (click)="navigateTo('cars')">Registered cars</button>
+      <span class="separator"></span>
+      <button class="nav-button" >My registered cars</button>
+      <div class="float-right">
+        <button class="nav-button">Login</button>
+        <span class="separator"></span>
+        <button class="nav-button">Sign up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #mobileNav>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="navigateTo('home')">Home</button>
+      <button mat-menu-item (click)="navigateTo('cars')">Registered cars</button>
+      <button mat-menu-item>My registered cars</button>
+      <button mat-menu-item>Login</button>
+      <button mat-menu-item>Sign up</button>
+    </mat-menu>
+  </div>
+</ng-template>
