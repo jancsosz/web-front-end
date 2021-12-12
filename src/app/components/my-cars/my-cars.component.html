@@ -1,0 +1,46 @@
+<app-menu></app-menu>
+<mat-label *ngIf="ownCars.data.length === 0">There are no registered cars at the moment</mat-label>
+<mat-table *ngIf="ownCars.data.length > 0" [dataSource]="ownCars" multiTemplateDataRows matSort matSortActive="modify" matSortDirection="desc" matSortDisableClear>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Brand name </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ownerName">
+    <mat-header-cell *matHeaderCellDef> Owner </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.ownerName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="numPlate">
+    <mat-header-cell *matHeaderCellDef> Number plate </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.numPlate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="weight">
+    <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.weight}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>
+      Actions </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+
+      <mat-icon style="cursor: pointer" (click)="openEditCarDialog(row)">mode_edit</mat-icon>
+
+
+      <mat-icon style="cursor: pointer" (click)="deleteCar(row.numPlate)">delete</mat-icon>
+
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
