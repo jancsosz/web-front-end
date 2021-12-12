@@ -1,0 +1,50 @@
+<app-menu></app-menu>
+
+<form [formGroup]="registerCarForm" (ngSubmit)="register()">
+  <mat-grid-list cols="1" rowHeight="80px">
+    <mat-grid-tile>
+      <mat-form-field appearance="fill">
+        <mat-label>Brand</mat-label>
+        <input required matInput formControlName="name">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <input required matInput formControlName="type">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field appearance="fill">
+        <mat-label>Number plate</mat-label>
+        <input required matInput formControlName="numPlate">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field appearance="fill">
+        <mat-label>Weight</mat-label>
+        <input required matInput formControlName="weight">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button mat-button color="primary" matRipple type="submit" class="basic-button">Register</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</form>
+
+<div *ngIf="registeredCar">
+  <h2>Registered car:</h2>
+  <mat-label class="font-weight-bold">Name:</mat-label>
+  <div>{{registeredCar.name}}</div>
+  <mat-label class="font-weight-bold">Type:</mat-label>
+  <div>{{registeredCar.type}}</div>
+  <mat-label class="font-weight-bold">Owner:</mat-label>
+  <div>{{registeredCar.ownerName}}</div>
+  <mat-label class="font-weight-bold">Number Plate:</mat-label>
+  <div>{{registeredCar.numPlate}}</div>
+</div>
