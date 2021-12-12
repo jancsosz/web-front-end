@@ -25,7 +25,7 @@ export class UpdateCarDialogComponent implements OnInit {
   }
 
   public update(): void {
-    this.carRegistryService.updateCarPUT(this.createCarDTO())
+    this.carRegistryService.updateCarPUT(this.createCarDTO(), window.localStorage.getItem('token'))
       .then(result => {
         this.dialogRef.close(result);
       });

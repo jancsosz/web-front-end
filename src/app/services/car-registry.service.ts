@@ -21,10 +21,10 @@ export class CarRegistryService extends BaseService {
   public async registerCar(carDTO: CarDTO, token: string): Promise<any> {
 
     const url = `${this.carUrl}${this.registerUrl}`;
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     const options = {
-      // headers,
+      headers,
       body: carDTO,
       responseType: 'json' as const
     };
@@ -45,8 +45,10 @@ export class CarRegistryService extends BaseService {
 
   public async getOwnCars(ownerName: string, token: string): Promise<CarDTO[]> {
     const url = `${this.carUrl}${this.ownUrl}`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     const options = {
+      headers,
       params: {ownerName},
       responseType: 'json' as const
     };
@@ -56,20 +58,22 @@ export class CarRegistryService extends BaseService {
 
   public async deleteCarByNumPlateDELETE(numPlate: string, token: string): Promise<string> {
     const url = `${this.carUrl}/${numPlate}`;
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     const options = {
-      // headers,
+      headers,
       responseType: 'text' as const
     };
 
     return (await this.restCall('DELETE', url, options));
   }
 
-  public async updateCarPUT(carDTO: CarDTO): Promise<CarDTO> {
+  public async updateCarPUT(carDTO: CarDTO, token: string): Promise<CarDTO> {
     const url = `${this.carUrl}${this.updateUrl}`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     const options = {
+      headers,
       body: carDTO,
       responseType: 'json' as const
     };
