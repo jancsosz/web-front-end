@@ -27,7 +27,7 @@ export class RegisterCarComponent implements OnInit {
   public register(): void {
     this.carRegistryService.registerCar(this.createCarDTO(), window.localStorage.getItem('token'))
       .then(result => {
-        this.registeredCar = result.data;
+        this.registeredCar = result;
       });
   }
 
