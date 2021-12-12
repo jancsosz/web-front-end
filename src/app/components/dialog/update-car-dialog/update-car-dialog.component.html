@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Update car</h2>
+<form [formGroup]="updateCarForm" (ngSubmit)="update()">
+  <mat-dialog-content>
+
+    <mat-grid-list cols="1" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Brand</mat-label>
+          <input required matInput formControlName="name">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <input required matInput formControlName="type">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Number plate</mat-label>
+          <input readonly required matInput formControlName="numPlate">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Weight</mat-label>
+          <input required matInput formControlName="weight">
+        </mat-form-field>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button [mat-dialog-close]="null" mat-button color="primary" matRipple type="button">Close</button>
+    <button style="margin-left: auto" mat-button color="primary" matRipple type="submit">Update car</button>
+  </mat-dialog-actions>
+
+
+</form>
