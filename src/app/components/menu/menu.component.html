@@ -4,12 +4,22 @@
       <button class="nav-button" (click)="navigateTo('home')">Home</button>
       <span class="separator"></span>
       <button class="nav-button" (click)="navigateTo('cars')">Registered cars</button>
-      <span class="separator"></span>
-      <button class="nav-button" >My registered cars</button>
-      <div class="float-right">
-        <button class="nav-button">Login</button>
+      <span *ngIf="isLoggedIn" class="separator"></span>
+      <button *ngIf="isLoggedIn" class="nav-button" (click)="navigateTo('own-cars')">My registered cars</button>
+      <span *ngIf="isLoggedIn" class="separator"></span>
+      <button *ngIf="isLoggedIn" class="nav-button" (click)="navigateTo('register-car')">Register car</button>
+
+
+
+      <div *ngIf="!isLoggedIn" class="float-right">
+        <button class="nav-button" (click)="navigateTo('signin')">Login</button>
         <span class="separator"></span>
-        <button class="nav-button">Sign up</button>
+        <button class="nav-button" (click)="navigateTo('signup')">Sign up</button>
+      </div>
+      <div *ngIf="isLoggedIn" class="float-right">
+        <button class="nav-button">{{username}}</button>
+        <span class="separator"></span>
+        <button class="nav-button" (click)="logOut()">Log out</button>
       </div>
     </div>
   </div>
@@ -22,9 +32,17 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="navigateTo('home')">Home</button>
       <button mat-menu-item (click)="navigateTo('cars')">Registered cars</button>
-      <button mat-menu-item>My registered cars</button>
-      <button mat-menu-item>Login</button>
-      <button mat-menu-item>Sign up</button>
+      <button mat-menu-item (click)="navigateTo('own-cars')">My registered cars</button>
+      <button mat-menu-item (click)="navigateTo('register-car')">Register car</button>
+
+      <div *ngIf="!isLoggedIn">
+        <button mat-menu-item (click)="navigateTo('signin')">Login</button>
+        <button mat-menu-item (click)="navigateTo('signup')">Sign up</button>
+      </div>
+      <div *ngIf="isLoggedIn">
+        <button mat-menu-item >Signed in with {{username}}</button>
+        <button mat-menu-item (click)="logOut()">Log out</button>
+      </div>
     </mat-menu>
   </div>
 </ng-template>
