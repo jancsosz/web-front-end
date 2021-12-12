@@ -1,0 +1,31 @@
+<app-menu></app-menu>
+
+<form [formGroup]="signUpForm" (ngSubmit)="signup()">
+  <mat-grid-list cols="1" rowHeight="80px">
+    <mat-grid-tile>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input required matInput formControlName="username">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" required matInput formControlName="password">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input required matInput formControlName="email">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button mat-button color="primary" matRipple type="submit" class="basic-button">Login</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</form>
